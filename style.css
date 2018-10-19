@@ -18,7 +18,7 @@ body {
     perspective: 2000px;
 }
 
-.book {
+.book, .preview-container {
     position: relative;
     width: 100%;
     height: 100%;
@@ -26,7 +26,7 @@ body {
     transform-style: preserve-3d;
 }
 
-.page {
+.page, .normal-page {
     cursor: pointer;
     position: absolute;
     color: black;
@@ -67,7 +67,6 @@ body {
     transform: rotateY(180deg);
 }
 
-
 .page.active {
     z-index: 1;
 }
@@ -85,10 +84,41 @@ body {
     -webkit-transform: rotateY(-160deg);
     transform: rotateY(-160deg);
 }
+
 .page.flipped:last-of-type {
     z-index: 1;
 }
 
 p {
     margin: 0;
+}
+
+.normal-page.active {
+    z-index: 1;
+}
+
+.normal-page.flipped {
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+.normal-page.active:hover {
+    transform: rotateY(-20deg);
+}
+
+.normal-page.flipped:hover {
+    -webkit-transform: rotateY(-160deg);
+    transform: rotateY(-160deg);
+}
+
+.normal-page.flipped:last-of-type {
+    z-index: 1;
+}
+
+.normal-page.back{
+    background: aquamarine;
+}
+
+.normal-page.front{
+    background: seagreen;
 }
