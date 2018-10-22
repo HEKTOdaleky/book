@@ -26,7 +26,7 @@ body {
     transform-style: preserve-3d;
 }
 
-.page, .normal-page {
+.page {
     cursor: pointer;
     position: absolute;
     color: black;
@@ -93,32 +93,12 @@ p {
     margin: 0;
 }
 
-.normal-page.active {
-    z-index: 1;
+
+
+.image-cont {
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    width: 100%;
+    height: 100%;
 }
 
-.normal-page.flipped {
-    -webkit-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
-}
-
-.normal-page.active:hover {
-    transform: rotateY(-20deg);
-}
-
-.normal-page.flipped:hover {
-    -webkit-transform: rotateY(-160deg);
-    transform: rotateY(-160deg);
-}
-
-.normal-page.flipped:last-of-type {
-    z-index: 1;
-}
-
-.normal-page.back{
-    background: aquamarine;
-}
-
-.normal-page.front{
-    background: seagreen;
-}
