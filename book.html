@@ -15,27 +15,29 @@
 
 <div class="scene">
     <div class="preview-container book" data-librio-book-container>
-        <div class="preview-page front-cover" data-page data-background-file="download.jpeg"></div>
-        <div class="preview-page inside-cover-left" data-page data-background-file="path/to/the/innercover.jpg"></div>
-        <div class="preview-page dedication-page" data-page data-background-file="path/to/the/dedicationbackground.jpg">
-            <div class="text-overlay dedication-text" data-text-overlay>This is the book dedication</div>
+        <div class="preview-page front-cover" data-page data-background-file="1.jpg"></div>
+        <div class="preview-page inside-cover-left" data-page data-background-file="2.jpg"></div>
+        <div class="preview-page dedication-page" data-page data-background-file="3.jpg">
+            <!--<div class="text-overlay dedication-text" data-text-overlay>This is the book dedication</div>-->
         </div>
-        <div class="preview-page normal-page" data-page data-background-file="path/to/page1.jpg"></div>
-        <div class="preview-page normal-page" data-page data-background-file="path/to/page2.jpg"></div>
-        <div class="preview-page normal-page" data-page data-background-file="path/to/page12.jpg">
+        <div class="preview-page normal-page" data-page data-background-file="4.jpg"></div>
+        <div class="preview-page normal-page" data-page data-background-file="5.jpg"></div>
+        <div class="preview-page normal-page" data-page data-background-file="6.jpg">
             <div class="image-overlay special-image-overlay" data-image-overlay>
-                <img src="special/image/here.jpg"/>
+                <!--<img src="special/image/here.jpg"/>-->
             </div>
         </div>
-        <div class="preview-page normal-page" data-page data-background-file="s-l300.jpg"></div>
-        <div class="preview-page normal-page" data-page data-background-file="s-l300.jpg"></div>
-        <div class="preview-page normal-page" data-page data-background-file="path/to/page14.jpg"></div>
-        <div class="preview-page back-cover" data-page data-background-file="path/to/the/backcoverimage.jpg"></div>
+        <div class="preview-page normal-page" data-page data-background-file="7.jpg"></div>
+        <div class="preview-page normal-page" data-page data-background-file="8.jpg"></div>
+    </div>
+    <div>
+        <input type="number" class="input_n">
+        <button class="button_n">Go to that page</button>
     </div>
 </div>
 
 <script>
-    $('.scene').setBook();
+    $('.scene').setBook(0.1, 2);
 </script>
 
 </body>
