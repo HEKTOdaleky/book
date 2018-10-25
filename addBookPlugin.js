@@ -21,7 +21,7 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
 
     const runMethod = () => {
         for (let i = 0; i < childrens.length; i += 2) {
-            let select = $(`<section class="page ${!i ? "active" : ""}">`);
+            let select = $(`<section class="page ${!i ? "active" : i - 1 === 1 ? 'closed' : ''}">`);
             select.append(createElement(childrens[i], i)).append(createElement(childrens[i + 1], i + 1));
             container.append(select)
         }
@@ -56,7 +56,9 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
         _curentPage--;
         console.log(_curentPage)
         $('.last_flipped')
-            .removeClass('last_flipped')
+            .removeClass('last_flipped');
+        $('.closed')
+            .removeClass('closed');
         $('.flipped')
             .last()
             .removeClass('flipped')
@@ -66,6 +68,10 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
         $('.flipped')
             .last()
             .addClass('last_flipped')
+        $('.active')
+            .next('.page')
+            .addClass('closed')
+
     }
 
     function nextPage() {
@@ -73,12 +79,16 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
         console.log(_curentPage)
         $('.last_flipped')
             .removeClass('last_flipped')
+        $('.closed')
+            .removeClass('closed');
         $('.active')
             .removeClass('active')
             .addClass('flipped')
             .addClass('last_flipped')
             .next('.page')
             .addClass('active')
+            .next('.page')
+            .addClass('closed')
     }
 
 };

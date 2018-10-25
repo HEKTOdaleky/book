@@ -112,4 +112,6 @@ p {
 .page.last_flipped {
     z-index: 5 !important;
 }
-
+.closed{
+    z-index: 1;
+}
