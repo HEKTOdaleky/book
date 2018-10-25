@@ -12,20 +12,11 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
 
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
-    };
+    }
 
     const createElement = (str, index) => {
         const image = $(str).attr('data-background-file');
         return $(str).addClass(index % 2 ? "back" : "front").append($('<div class="image-cont"/>').css('background', `url(${image})`))
-    };
-
-    const runMethod = () => {
-        for (let i = 0; i < childrens.length; i += 2) {
-            let select = $(`<section class="page ${!i ? "active" : i - 1 === 1 ? 'closed' : ''}">`);
-            select.append(createElement(childrens[i], i)).append(createElement(childrens[i + 1], i + 1));
-            container.append(select)
-        }
-        changePage();
     };
 
     async function changePage() {
@@ -36,6 +27,15 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
         }
         inp.val("");
         _page = undefined;
+    }
+
+    const runMethod = () => {
+        for (let i = 0; i < childrens.length; i += 2) {
+            let select = $(`<section class="page ${!i ? "active" : i - 1 === 1 ? 'closed' : ''}">`);
+            select.append(createElement(childrens[i], i)).append(createElement(childrens[i + 1], i + 1));
+            container.append(select)
+        }
+        changePage();
     };
 
     runMethod();
@@ -54,33 +54,35 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
 
     function prevPage() {
         _curentPage--;
-        console.log(_curentPage)
         $('.last_flipped')
             .removeClass('last_flipped');
+
         $('.closed')
             .removeClass('closed');
+
         $('.flipped')
             .last()
             .removeClass('flipped')
             .addClass('active')
             .siblings('.page')
-            .removeClass('active')
+            .removeClass('active');
         $('.flipped')
             .last()
-            .addClass('last_flipped')
+            .addClass('last_flipped');
+
         $('.active')
             .next('.page')
             .addClass('closed')
-
     }
 
     function nextPage() {
         _curentPage++;
-        console.log(_curentPage)
         $('.last_flipped')
-            .removeClass('last_flipped')
+            .removeClass('last_flipped');
+
         $('.closed')
             .removeClass('closed');
+
         $('.active')
             .removeClass('active')
             .addClass('flipped')
