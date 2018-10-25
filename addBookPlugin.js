@@ -5,7 +5,7 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
     let _length = childrens.length;
     let _curentPage = 0;
     const _timeout = switchPageTimeout ? switchPageTimeout * 1000 : 50;
-    let _page ;
+    let _page;
 
     const btn = $('.button_n');
     const inp = $('.input_n').attr("placeholder", `${childrens.length } pages in the book`);
@@ -55,20 +55,28 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
     function prevPage() {
         _curentPage--;
         console.log(_curentPage)
+        $('.last_flipped')
+            .removeClass('last_flipped')
         $('.flipped')
             .last()
             .removeClass('flipped')
             .addClass('active')
             .siblings('.page')
-            .removeClass('active');
+            .removeClass('active')
+        $('.flipped')
+            .last()
+            .addClass('last_flipped')
     }
 
     function nextPage() {
         _curentPage++;
         console.log(_curentPage)
+        $('.last_flipped')
+            .removeClass('last_flipped')
         $('.active')
             .removeClass('active')
             .addClass('flipped')
+            .addClass('last_flipped')
             .next('.page')
             .addClass('active')
     }
