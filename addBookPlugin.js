@@ -35,7 +35,7 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
      */
     const createElement = (str, index) => {
         const image = $(str).attr('data-background-file');
-        return $(str).addClass(index % 2 ? 'back' : 'front').append($('<div class="image-cont"/>').css('background', `url(${image})`))
+        return $(str).addClass(index % 2 ? 'back' : 'front').append($('<div class="image-cont"/>').addClass(index % 2 ? 'left-page' : 'right-page').css('background', `url(${image})`));
     };
 
     async function changePage() {
@@ -66,7 +66,6 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
             }
 
             let select = $(`<section class='page ${firstActivePage} ${firstClosedPage}'>`);
-
             select.append(createElement(childrens[i], i)).append(createElement(childrens[i + 1], i + 1));
             container.append(select)
         }
