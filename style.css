@@ -88,16 +88,16 @@ body {
 }
 
 .page.flipped {
-    -webkit-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
+    -webkit-transform: rotateY(-179deg);
+    transform: rotateY(-179deg);
     z-index: 0 !important;
 }
 
-.page.active:hover {
+.page.right {
     transform: rotateY(-20deg);
 }
 
-.page.last_flipped:hover {
+.page.left {
     transform: rotateY(-160deg);
 }
 

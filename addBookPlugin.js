@@ -80,7 +80,8 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
     prevPage = () => {
         _curentPage--;
         $('.last_flipped')
-            .removeClass('last_flipped');
+            .removeClass('last_flipped')
+            .removeClass("left");
 
         $('.closed')
             .removeClass('closed');
@@ -110,6 +111,7 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
 
         $('.active')
             .removeClass('active')
+            .removeClass("right")
             .addClass('flipped')
             .addClass('last_flipped')
             .next('.page')
@@ -121,6 +123,20 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
     container
         .on('click', '.active', nextPage)
         .on('click', '.flipped', prevPage);
+
+    $('.page>.front').mouseover(function(){
+        $(".active").addClass('right');
+    })
+        .mouseleave(function(){
+            $(".active").removeClass('right');
+        });
+
+    $('.page>.back').mouseover(function(){
+        $(".last_flipped").addClass('left');
+    })
+        .mouseleave(function(){
+            $(".last_flipped").removeClass('left');
+        });
 
     container.on('swipeleft', nextPage);
     container.on('swiperight', prevPage);
