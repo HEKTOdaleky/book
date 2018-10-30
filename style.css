@@ -12,8 +12,8 @@ body {
 
 .scene {
     width: 600px;
-    height: 600px;
-    margin: 16px auto;
+    height: 700px;
+    margin: 16px 40%;
     -webkit-perspective: 2000px;
     perspective: 2000px;
 }

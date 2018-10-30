@@ -124,17 +124,17 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
         .on('click', '.active', nextPage)
         .on('click', '.flipped', prevPage);
 
-    $('.page>.front').mouseover(function(){
+    $('.page>.front').mouseover(function () {
         $(".active").addClass('right');
     })
-        .mouseleave(function(){
+        .mouseleave(function () {
             $(".active").removeClass('right');
         });
 
-    $('.page>.back').mouseover(function(){
+    $('.page>.back').mouseover(function () {
         $(".last_flipped").addClass('left');
     })
-        .mouseleave(function(){
+        .mouseleave(function () {
             $(".last_flipped").removeClass('left');
         });
 
