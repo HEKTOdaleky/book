@@ -31,11 +31,14 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
      * Creating a list with front and back page part
      * @param str
      * @param index
+     * @param pageIndex
      * @returns {void | jQuery}
      */
-    const createElement = (str, index) => {
+    const createElement = (str, index, pageIndex) => {
+        //TODO double check background - 2 + elements must have background
+        const background = pageIndex === index || Math.abs(index - pageIndex) <= pageIndex - 2 || index + pageIndex <= pageIndex + 1;
         const image = $(str).attr('data-background-file');
-        return $(str).addClass(index % 2 ? 'back' : 'front').append($('<div class="image-cont"/>').addClass(index % 2 ? 'left-page' : 'right-page').css('background', `url(${image})`));
+        return $(str).addClass(index % 2 ? 'back' : 'front').append($('<div class="image-cont"/>').addClass(index % 2 ? 'left-page' : 'right-page').css('background', background ? `url(${image})` : ''));
     };
 
     async function changePage() {
@@ -66,7 +69,7 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
             }
 
             let select = $(`<section class='page ${firstActivePage} ${firstClosedPage}'>`);
-            select.append(createElement(childrens[i], i)).append(createElement(childrens[i + 1], i + 1));
+            select.append(createElement(childrens[i], i, 3)).append(createElement(childrens[i + 1], i + 1, 4));
             container.append(select)
         }
 
@@ -77,6 +80,7 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
     $('.preview-container').remove();
     this.append(container);
 
+    // TODO add currentPage -2 element background attribute - make check on exist element, before changing his background
     prevPage = () => {
         _curentPage--;
         $('.last_flipped')
@@ -101,6 +105,7 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
             .addClass('closed')
     };
 
+    // TODO add currentPage +2 element background attribute - make check on exist element, before changing his background
     nextPage = () => {
         _curentPage++;
         $('.last_flipped')
