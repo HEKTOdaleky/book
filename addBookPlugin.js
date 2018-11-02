@@ -38,7 +38,7 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
         //TODO double check background - 2 + elements must have background
         const background = pageIndex === index || Math.abs(index - pageIndex) <= pageIndex - 2 || index + pageIndex <= pageIndex + 1;
         const image = $(str).attr('data-background-file');
-        return $(str).addClass(index % 2 ? 'back' : 'front').append($('<div class="image-cont"/>').addClass(index % 2 ? 'left-page' : 'right-page').css('background', background ? `url(${image})` : ''));
+        return $(str).attr('id', `page__${index}`).addClass(index % 2 ? 'back' : 'front').append($('<div class="image-cont"/>').addClass(index % 2 ? 'left-page' : 'right-page').css('background', background ? `url(${image})` : ''));
     };
 
     async function changePage() {
@@ -102,7 +102,22 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
 
         $('.active')
             .next('.page')
-            .addClass('closed')
+            .addClass('closed');
+
+        const page = Math.floor(_curentPage * 2) - 4;
+        let count = 0;
+
+        while (count < 2) {
+            let obj = $(`#page__${page - count}`);
+            let child = $(`#page__${page - count} > .image-cont`);
+
+            if (!$(child).css('background-image'))
+                break;
+            else if ($(child).css('background-image') === 'none') {
+                $(child).css('background-image', `url(${obj.attr('data-background-file')})`);
+            }
+            count++;
+        }
     };
 
     // TODO add currentPage +2 element background attribute - make check on exist element, before changing his background
@@ -122,7 +137,23 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
             .next('.page')
             .addClass('active')
             .next('.page')
-            .addClass('closed')
+            .addClass('closed');
+
+
+        const page = Math.floor(_curentPage * 2) + 4;
+        let count = 0;
+
+        while (count < 2) {
+            let obj = $(`#page__${page + count}`);
+            let child = $(`#page__${page + count} > .image-cont`);
+
+            if (!$(child).css('background-image'))
+                break;
+            else if ($(child).css('background-image') === 'none') {
+                $(child).css('background-image', `url(${obj.attr('data-background-file')})`);
+            }
+            count++;
+        }
     };
 
     container
