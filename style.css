@@ -15,7 +15,7 @@ body {
     height: 700px;
     margin: 16px 40%;
     -webkit-perspective: 2000px;
-    perspective: 2000px;
+    perspective: 3000px;
 }
 
 .book, .preview-container {
@@ -32,8 +32,8 @@ body {
     color: black;
     width: 100%;
     height: 100%;
-
-    -webkit-transition: 1.5s -webkit-transform;
+    user-select: none;
+    -webkit-transition: 0.4s -webkit-transform;
 
     transition: 0.4s transform;
     -webkit-transform-style: preserve-3d;
@@ -79,8 +79,10 @@ body {
     transform: rotateY(180deg);
 }
 
+
 .page.active {
     z-index: 5;
+    user-select: none;
 }
 
 .page.last_flipped {
@@ -91,14 +93,15 @@ body {
     -webkit-transform: rotateY(-179deg);
     transform: rotateY(-179deg);
     z-index: 0 !important;
+    user-select: none;
 }
 
 .page.right {
-    transform: rotateY(-20deg);
+    transform: rotateY(-10deg);
 }
 
 .page.left {
-    transform: rotateY(-160deg);
+    transform: rotateY(-170deg);
 }
 
 .page.flipped:last-of-type {
@@ -115,6 +118,7 @@ p {
     width: 100%;
     height: 100%;
     z-index: 0 !important;
+    user-select: none;
 }
 
 .page.active.image-cont {

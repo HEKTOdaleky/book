@@ -5,7 +5,9 @@
  * @param switchPageTimeout - time of page rolling, default 50ms
  * @param startPage - param for starting page, default is 0
  */
-$.fn.setBook = function (switchPageTimeout, startPage) {
+$.fn.setBook = function (switchPageTimeout, transition, startPage) {
+
+    const mobile = isMobile(navigator.userAgent || navigator.vendor || window.opera);
 
     //The contents of the container
     let childrens = this.find($('.preview-page'));
@@ -14,6 +16,7 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
 
     let _curentPage = 0;
     const _timeout = switchPageTimeout ? switchPageTimeout * 1000 : 50;
+    const _pageTransition = transition ? transition : 0.4;
     let _page;
 
     const btn = $('.button_n');
@@ -35,7 +38,6 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
      * @returns {void | jQuery}
      */
     const createElement = (str, index, pageIndex) => {
-        //TODO double check background - 2 + elements must have background
         const background = pageIndex === index || Math.abs(index - pageIndex) <= pageIndex - 2 || index + pageIndex <= pageIndex + 1;
         const image = $(str).attr('data-background-file');
         return $(str).attr('id', `page__${index}`).addClass(index % 2 ? 'back' : 'front').append($('<div class="image-cont"/>').addClass(index % 2 ? 'left-page' : 'right-page').css('background', background ? `url(${image})` : ''));
@@ -68,7 +70,7 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
                 firstClosedPage = 'closed';
             }
 
-            let select = $(`<section class='page ${firstActivePage} ${firstClosedPage}'>`);
+            let select = $(`<section class='page ${firstActivePage} ${firstClosedPage}'>`).css('transition', `${_pageTransition}s transform`);
             select.append(createElement(childrens[i], i, 3)).append(createElement(childrens[i + 1], i + 1, 4));
             container.append(select)
         }
@@ -80,7 +82,6 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
     $('.preview-container').remove();
     this.append(container);
 
-    // TODO add currentPage -2 element background attribute - make check on exist element, before changing his background
     prevPage = () => {
         _curentPage--;
         $('.last_flipped')
@@ -120,9 +121,9 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
         }
     };
 
-    // TODO add currentPage +2 element background attribute - make check on exist element, before changing his background
     nextPage = () => {
         _curentPage++;
+
         $('.last_flipped')
             .removeClass('last_flipped');
 
@@ -138,6 +139,7 @@ $.fn.setBook = function (switchPageTimeout, startPage) {
             .addClass('active')
             .next('.page')
             .addClass('closed');
+
 
 
         const page = Math.floor(_curentPage * 2) + 4;
