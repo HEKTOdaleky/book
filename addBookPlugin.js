@@ -7,7 +7,6 @@
  */
 $.fn.setBook = function (switchPageTimeout, transition, startPage) {
 
-    const mobile = isMobile(navigator.userAgent || navigator.vendor || window.opera);
 
     //The contents of the container
     let childrens = this.find($('.preview-page'));
@@ -84,12 +83,15 @@ $.fn.setBook = function (switchPageTimeout, transition, startPage) {
 
     prevPage = () => {
         _curentPage--;
+        $('.superFlip').removeClass('superFlip');
+
         $('.last_flipped')
             .removeClass('last_flipped')
             .removeClass("left");
 
         $('.closed')
             .removeClass('closed');
+
 
         $('.flipped')
             .last()
@@ -124,22 +126,24 @@ $.fn.setBook = function (switchPageTimeout, transition, startPage) {
     nextPage = () => {
         _curentPage++;
 
+        $('.superFlip').removeClass('superFlip');
         $('.last_flipped')
             .removeClass('last_flipped');
 
         $('.closed')
             .removeClass('closed');
 
+
         $('.active')
             .removeClass('active')
             .removeClass("right")
             .addClass('flipped')
             .addClass('last_flipped')
+            .addClass('superFlip')
             .next('.page')
             .addClass('active')
             .next('.page')
             .addClass('closed');
-
 
 
         const page = Math.floor(_curentPage * 2) + 4;
