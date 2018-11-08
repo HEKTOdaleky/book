@@ -3,6 +3,8 @@ html {
     overflow: hidden;
 }
 
+
+
 body {
     background: #2c2d2d;
     margin: 0;
@@ -41,6 +43,8 @@ body {
     -webkit-transform-origin: left center;
     -ms-transform-origin: left center;
     transform-origin: left center;
+
+    -webkit-tap-highlight-color: transparent;
 }
 
 .front,
