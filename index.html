@@ -14,30 +14,30 @@
     <script src="addBookPlugin.js"></script>
 </head>
 <body>
-
-<div class="scene">
-    <div class="preview-container book" data-librio-book-container>
-        <div class="preview-page front-cover" data-page data-background-file="1.jpg"></div>
-        <div class="preview-page inside-cover-left" data-page data-background-file="2.jpg"></div>
-        <div class="preview-page dedication-page" data-page data-background-file="3.jpg">
-            <div class="text-overlay dedication-text" data-text-overlay>This is the book dedication</div>
-        </div>
-        <div class="preview-page normal-page" data-page data-background-file="4.jpg"></div>
-        <div class="preview-page normal-page" data-page data-background-file="5.jpg"></div>
-        <div class="preview-page normal-page" data-page data-background-file="6.jpg">
-            <div class="image-overlay special-image-overlay" data-image-overlay>
-                <img src="special/image/here.jpg"/>
+<div class="wrapper">
+    <div class="scene">
+        <div class="preview-container book" data-librio-book-container>
+            <div class="preview-page front-cover" data-page data-background-file="1.jpg"></div>
+            <div class="preview-page inside-cover-left" data-page data-background-file="2.jpg"></div>
+            <div class="preview-page dedication-page" data-page data-background-file="3.jpg">
+                <div class="text-overlay dedication-text" data-text-overlay>This is the book dedication</div>
             </div>
+            <div class="preview-page normal-page" data-page data-background-file="4.jpg"></div>
+            <div class="preview-page normal-page" data-page data-background-file="5.jpg"></div>
+            <div class="preview-page normal-page" data-page data-background-file="6.jpg">
+                <div class="image-overlay special-image-overlay" data-image-overlay>
+                    <img src="special/image/here.jpg"/>
+                </div>
+            </div>
+            <div class="preview-page normal-page" data-page data-background-file="7.jpg"></div>
+            <div class="preview-page normal-page" data-page data-background-file="8.jpg"></div>
         </div>
-        <div class="preview-page normal-page" data-page data-background-file="7.jpg"></div>
-        <div class="preview-page normal-page" data-page data-background-file="8.jpg"></div>
-    </div>
-    <div>
-        <input type="number" class="input_n">
-        <button class="button_n">Go to that page</button>
+        <div>
+            <input type="number" class="input_n">
+            <button class="button_n">Go to that page</button>
+        </div>
     </div>
 </div>
-
 
 <script>
     $('.scene').setBook(0.1, .5);

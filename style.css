@@ -1,6 +1,5 @@
 html {
     height: 100%;
-    overflow: hidden;
 }
 
 body {
@@ -10,12 +9,59 @@ body {
     height: 100%;
 }
 
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+.page-step {
+    margin-top: 50px;
+    text-align: center;
+}
+
 .scene {
     width: 600px;
     height: 700px;
-    margin: 16px 40%;
+    margin: 16px 0;
+    margin-left: 600px;
     -webkit-perspective: 2000px;
     perspective: 3000px;
+}
+
+@media screen and (max-width: 1200px) {
+    .scene {
+        width: 450px;
+        height: 540px;
+        margin: 20px 0;
+        margin-left: 450px;
+    }
+}
+@media screen and (max-width: 991px) {
+    .scene {
+        width: 740px!important;
+        margin: 30px auto!important;
+    }
+    .scene .mobile-container {
+        width: 100%;
+        height: 900px;
+    }
+    .scene .mobile-item {
+        width: 100%;
+        height: 900px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .scene {
+        width: 310px!important;
+        margin: 30px auto!important;
+    }
+    .scene .mobile-container {
+        width: 100%;
+        height: 900px;
+    }
+    .scene .mobile-item {
+        width: 100%;
+        height: 900px;
+    }
 }
 
 .book, .preview-container {
