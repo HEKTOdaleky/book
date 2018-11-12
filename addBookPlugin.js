@@ -76,6 +76,10 @@ $.fn.setBook = function (switchPageTimeout, transition, startPage) {
             }
 
             changePage();
+            if (startPage) {
+                inp.val(startPage);
+                setTimeout(() => changePage(startPage));
+            }
         };
 
         runMethod();
@@ -84,6 +88,7 @@ $.fn.setBook = function (switchPageTimeout, transition, startPage) {
 
         prevPage = () => {
             _curentPage--;
+            $('.right').removeClass("right");
             $('.superFlip').removeClass('superFlip');
 
             $('.last_flipped')
@@ -185,6 +190,6 @@ $.fn.setBook = function (switchPageTimeout, transition, startPage) {
         btn.click(changePage);
     }
     else {
-        mobileInit(this)
+        mobileInit(this, startPage)
     }
 };

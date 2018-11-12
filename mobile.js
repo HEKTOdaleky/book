@@ -1,4 +1,4 @@
-let mobileInit = (context) => {
+let mobileInit = (context, startPage) => {
     let childrens = context.find($('.preview-page'));
     let container = $('<div class="preview-container">');
     let mobileContainer = $('<div class="mobile-container">');
@@ -15,16 +15,26 @@ let mobileInit = (context) => {
         else if (i === childrens.length - 1)
             comp.addClass('last-mobile');
         else if (i % 2 !== 0)
-            comp.addClass('list-page')
+            comp.addClass('list-page left-page');
+        else if (i % 2 === 0)
+            comp.addClass('right-page');
         mobileContainer.append(comp);
     }
 
-    btn.click(function () {
+    const changePage = (page) => {
+        if (page)
+            inp.val(page);
         href.attr('href', `#page_${inp.val()}`);
         $('#href')[0].click();
-    });
+    };
+
+    if (startPage) {
+        setTimeout(() => changePage(startPage));
+    }
+
+    btn.click(() => changePage());
 
     $('.preview-container').remove();
-    container.append(href)
+    container.append(href);
     context.append(container.append(mobileContainer))
-}
+};
